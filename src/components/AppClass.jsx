@@ -1,3 +1,5 @@
+import '../reset.css';
+import '../App.css';
 import React, {Component} from 'react';
 
 class AppClass extends Component {
@@ -20,8 +22,25 @@ class AppClass extends Component {
                     title: 'Do other thing',
                     isComplete: false,
                 },
-            ]
-        }
+            ],
+        };
+    }
+
+    addTodo = (event) => {
+        event.preventDefault();
+
+        this.setState(prevState => {
+            const newTodos = [
+                ...prevState.todos,
+                {
+                    id: 4,
+                    title: 'This is class based component',
+                    isComplete: false,
+                }
+            ];
+
+            return { todos: newTodos };
+        })
     }
 
 
@@ -30,7 +49,7 @@ class AppClass extends Component {
             <div className="todo-app-container">
                 <div className="todo-app">
                     <h2>Todo App</h2>
-                    <form action="#">
+                    <form action="#" onSubmit={this.addTodo}>
                         <input
                             type="text"
                             className="todo-input"
