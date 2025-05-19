@@ -132,23 +132,26 @@ function App() {
                     
                     {!todo.isEditing ? (
                       <span 
-                    onDoubleClick={() => markAsEditing(todo.id)}
-                    className={`todo-item-label ${todo.isComplete ? 'line-through' : ''}`}>{todo.title}</span>
-
+                        onDoubleClick={() => markAsEditing(todo.id)}
+                        className={`todo-item-label ${todo.isComplete ? 'line-through' : ''}`}
+                      >
+                        {todo.title}
+                      </span>
                     ) : (
                       <input 
-                    type="text" 
-                    onBlur={(event) => updateTodo(event, todo.id)}
-                    onKeyDown = {(event) => {
-                      if (event.key === 'Enter') {
-                        updateTodo(event, todo.id);
-                      } else if (event.key === 'Escape') {
-                        cancelEdit(todo.id);
-                      }
-                    }}
-                    className="todo-item-input" 
-                    defaultValue={todo.title}
-                    autoFocus />
+                        type="text" 
+                        onBlur={(event) => updateTodo(event, todo.id)}
+                        onKeyDown = {(event) => {
+                          if (event.key === 'Enter') {
+                            updateTodo(event, todo.id);
+                          } else if (event.key === 'Escape') {
+                            cancelEdit(todo.id);
+                          }
+                        }}
+                        className="todo-item-input" 
+                        defaultValue={todo.title}
+                        autoFocus 
+                      />
                     )}
                   </div>
                   <button
